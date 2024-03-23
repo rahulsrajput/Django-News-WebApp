@@ -1,0 +1,4 @@
+- Installed django :)
+
+- Basic django template , static setup
+
