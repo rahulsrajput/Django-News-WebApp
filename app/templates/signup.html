@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}SignUp{% endblock %}
+
+{% block content %}
+<div class="text-black">
+    <h3>Sign Up</h3>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username">
+      
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password">
+      
+        <input type="submit" value="Register" class="btn">
+      </form> 
+      <p>Already have account ?<a href="{% url 'login' %}" style="color: rgb(255, 110, 110);"><b> Login</b></a></p>
+    </div>
+
+{% endblock %}

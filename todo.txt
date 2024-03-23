@@ -2,3 +2,4 @@
 
 - Basic django template , static setup
 
+- Basic frontend templates setup and urls, views setup :)

@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+
+<div>
+    <div class="admin-title text-black">
+        <h2>Posts</h2>
+        <a href="{% url 'addpost' %}" class="button">+ Add New</a>
+    </div>
+
+    <ul class="admin-posts">
+
+        <li>
+            <a href="">
+                Post Title &nearr;
+            </a>
+            <div class="admin-post-controls">
+                <a href="{% url 'editpost' %}" class="btn">Edit</a>
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Delete" class="btn-delete btn">
+                </form>
+
+            </div>
+
+        </li>
+
+    </ul>
+</div>
+
+{% endblock %}

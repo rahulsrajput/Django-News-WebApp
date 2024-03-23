@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Edit Post{% endblock %}
+{% block content %}
+
+<div class="text-black">
+    <a href="{% url 'dashboard' %}">&larr; Back</a>
+    <div class="admin-title">
+      <h2>Edit Post</h2>
+    
+    </div>
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+      <label for="title"><b>Title</b></label>
+      <input type="text" placeholder="Post Title" name="title" value="">
+    
+      <label for="body"><b>Content</b></label>
+      <textarea name="body" cols="50" rows="10"></textarea>
+    
+      <input type="submit" value="Update" class="btn">
+    
+    </form>
+</div>
+
+{% endblock %}
