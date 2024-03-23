@@ -11,25 +11,22 @@
 
     <section class="article text-dark" id="post">
 
-        <div class="input-group rounded mt-4">
+        <form action="" method="get">
+            <div class="input-group rounded mt-4">
+                <input type="search" class="form-control rounded  bg-transparent" style="margin-right: 20px;"
+                    placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="search" />
 
-            <input type="search" class="form-control rounded  bg-transparent" style="margin-right: 20px;"
-                placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-
-            <span class="input-group-text border-0 rounded bg-transparent text-dark" id="search-addon">
-                <i class="fas fa-search"></i>
-            </span>
-
-        </div>
+                <button class="input-group-text border-0 rounded bg-transparent text-dark" id="search-addon">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
 
         <div class="category mt-4">
-            <div class="category-item"><a href="">Tech</a></div>
-            <div class="category-item"><a href="">Health</a></div>
-            <div class="category-item"><a href="">Sports</a></div>
-            <div class="category-item"><a href="">Business</a></div>
-            <div class="category-item"><a href="">Sports</a></div>
-            <div class="category-item"><a href="">Politics</a></div>
-            <!-- Add more category items as needed -->
+            {% for category in categories %}
+            <div class="category-item"><a
+                    href="{% url 'home' %}?category={{category.name}}">{{category.name|capfirst}}</a></div>
+            {% endfor %}
         </div>
 
         <h2 class="article_heading">Recent</h2>
@@ -39,89 +36,32 @@
 
 
             <div class="row mt-5 mb-5">
+                {% for article in articles %}
                 <div class="col-md-6 mb-4">
-                    <a href="{% url 'detail' %}" class="card shadow-none border-0 bg-transparent">
+                    <a href="{% url 'detail' article.slug %}" class="card shadow-none border-0 bg-transparent">
                         <div class="card-body">
-                            <h3 class="card-title">India Has More Tech Job openings then USA</h3>
+                            <h3 class="card-title">{{article.title}}</h3>
 
                             <div class="row">
-                                <div class="col">
-                                    <span class="card-text text-muted">January 1, 2024</span>
+                                <div class="col-lg-5">
+                                    <span class="card-text text-muted txt">{{article.created_at}}</span>
                                 </div>
 
-                                <div class="col">
-                                    <span class="card-text text-muted">By John Doe</span>
+                                <div class="col-lg-4">
+                                    <span class="card-text text-muted txt">By {{article.user|capfirst}}</span>
+                                </div>
+
+                                <div class="col-lg-5">
+                                    <span class="card-text text-muted txt">Category:
+                                        {{article.category.name|capfirst}}</span>
                                 </div>
                             </div>
 
-                            <span class="card-text">Description of the news article goes here. This could be a brief
-                                summary of the content.</span>
+                            <span class="card-text">{{article.description|truncatewords:"15"}}</span>
                         </div>
                     </a>
                 </div>
-
-                <div class="col-md-6 mb-4">
-                    <a href="{% url 'detail' %}" class="card shadow-none border-0 bg-transparent">
-                        <div class="card-body">
-                            <h3 class="card-title">India Has More Tech Job openings then USA</h3>
-
-                            <div class="row">
-                                <div class="col">
-                                    <span class="card-text text-muted">January 1, 2024</span>
-                                </div>
-
-                                <div class="col">
-                                    <span class="card-text text-muted">By John Doe</span>
-                                </div>
-                            </div>
-
-                            <span class="card-text">Description of the news article goes here. This could be a brief
-                                summary of the content.</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-6 mb-4">
-                    <a href="{% url 'detail' %}" class="card shadow-none border-0 bg-transparent">
-                        <div class="card-body">
-                            <h3 class="card-title">India Has More Tech Job openings then USA</h3>
-
-                            <div class="row">
-                                <div class="col">
-                                    <span class="card-text text-muted">January 1, 2024</span>
-                                </div>
-
-                                <div class="col">
-                                    <span class="card-text text-muted">By John Doe</span>
-                                </div>
-                            </div>
-
-                            <span class="card-text">Description of the news article goes here. This could be a brief
-                                summary of the content.</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-6 mb-4">
-                    <a href="{% url 'detail' %}" class="card shadow-none border-0 bg-transparent">
-                        <div class="card-body">
-                            <h3 class="card-title">India Has More Tech Job openings then USA</h3>
-
-                            <div class="row">
-                                <div class="col">
-                                    <span class="card-text text-muted">January 1, 2024</span>
-                                </div>
-
-                                <div class="col">
-                                    <span class="card-text text-muted">By John Doe</span>
-                                </div>
-                            </div>
-
-                            <span class="card-text">Description of the news article goes here. This could be a brief
-                                summary of the content.</span>
-                        </div>
-                    </a>
-                </div>
+                {% endfor %}
             </div>
 
 

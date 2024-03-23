@@ -32,6 +32,9 @@ a:hover {
     margin-top: 10px;
 }
 
+.txt{
+    font-size: 15px;
+}
 
 h1 {
     font-size: var(--font-size-xl);

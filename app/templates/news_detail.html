@@ -6,18 +6,18 @@
 <div class="mt-5">
     <img src="{% static 'images/hero-image.webp' %}" alt="">
 </div>
-<div class="text-black mt-4">
-    <span>By John Doe</span>
-</div>
-<div class="mt-4 text-black">
-    <span>📆 January 1, 2024</span>
+
+<div class="category mt-4">
+    <div class="category-item"> <span>📆 {{article.created_at}}</span></div>
+    <div class="category-item"><span>By {{article.user|capfirst}}</span></div>
+    <div class="category-item"><span>Category: {{article.category.name|capfirst}}</span></div>
 </div>
 
 <article class="article text-black mt-5">
-    <h1 class="text-black" >Post Title</h1>
+    <h1 class="text-black">{{article.title}}</h1>
 
     <div class="my-5">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam molestiae optio doloribus dignissimos dolores iste dolore temporibus, repellat modi minima, totam, voluptas recusandae hic quo reprehenderit excepturi veritatis laborum? Porro, sequi, placeat eveniet natus accusamus id aliquam alias suscipit esse nemo corporis illo a officia saepe dolorem voluptatibus debitis. Veritatis?</p>
+        <p>{{article.description}}</p>
     </div>
 </article>
 {% endblock %}

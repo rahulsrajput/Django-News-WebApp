@@ -3,3 +3,22 @@
 - Basic django template , static setup
 
 - Basic frontend templates setup and urls, views setup :)
+
+- created category model , article model and registered 
+  that in admins.py file
+
+- article model
+    - created slug field for dynamic url
+
+- news_home views done
+  - category filter part done :)
+  - search filter part done :)
+  - used slug for dynamic urls..
+
+- logout view done :)
+
+- created form.py file for login_form & signup_form
+
+- login views , url done :)
+
+- signup view , url done :)
