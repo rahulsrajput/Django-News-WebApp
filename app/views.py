@@ -65,12 +65,15 @@ def edit_post(request,pk):
     article_obj = Article.objects.get(pk=pk)
 
     if request.method == 'POST':
-        title = request.POST['title']
-        desc = request.POST['description']
-        slug = request.POST['slug']
-        Article(pk=pk, title=title, description=desc, slug=slug).save()
-        return HttpResponseRedirect('/')
-    return render(request, 'dashboard/edit_post.html',context={'article_obj':article_obj})
+        form = add_post_form(request.POST, instance=article_obj)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/dashboard')
+
+    form = add_post_form(instance=article_obj)
+    
+    return render(request, 'dashboard/edit_post.html',context={'article_obj':article_obj, 'form':form})
 
 def delete_post(request, pk):
     if request.method == 'POST':
@@ -83,7 +86,7 @@ def delete_post(request, pk):
 def news_home(request):
     category_filter = request.GET.get('category')
     search = request.GET.get('search')
-    print(search)
+    # print(search)
 
     if category_filter is not None:
         articles = Article.objects.filter(category__name=category_filter)
