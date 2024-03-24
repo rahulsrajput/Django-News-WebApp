@@ -1,11 +1,13 @@
 {% extends 'index.html' %}
 {% load static %}
-{% block title %}{% endblock %}
+{% block title %}{{article.title}}{% endblock %}
 
 {% block content %}
+{% if article.image %}
 <div class="mt-5">
-    <img src="{% static 'images/hero-image.webp' %}" alt="">
+    <img src="{{article.image.url}}" alt="">
 </div>
+{% endif %}
 
 <div class="category mt-4">
     <div class="category-item"> <span>📆 {{article.created_at}}</span></div>

@@ -34,3 +34,9 @@
 - dashboard = add_post view and template done :)
 
 - dashboard = edit_post view and template done :)
+
+- cloudinary setup for storing images
+  - modified forms in templates
+  - modified add_post, edit_post views :)
+
+ 

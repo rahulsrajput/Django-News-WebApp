@@ -54,7 +54,7 @@ def dashboard(request):
 
 def add_post(request):
     if request.method == 'POST':
-        form = add_post_form(request.POST)
+        form = add_post_form(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/')
@@ -65,7 +65,7 @@ def edit_post(request,pk):
     article_obj = Article.objects.get(pk=pk)
 
     if request.method == 'POST':
-        form = add_post_form(request.POST, instance=article_obj)
+        form = add_post_form(request.POST,request.FILES,instance=article_obj)
 
         if form.is_valid():
             form.save()
