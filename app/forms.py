@@ -25,5 +25,5 @@ class add_post_form(forms.ModelForm):
     ) 
     class Meta:
         model = Article
-        fields = '__all__'
+        fields = ['title','description','image','category','user']
 

@@ -49,38 +49,50 @@ def logout_page(request):
 
 
 def dashboard(request):
-    articles = Article.objects.all()
+    if request.user.is_staff:
+        articles = Article.objects.all()
+    else:
+        return HttpResponseRedirect('/')
     return render(request, 'dashboard/dashboard_page.html', context={'articles':articles})
 
 def add_post(request):
-    if request.method == 'POST':
-        form = add_post_form(request.POST,request.FILES)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/')
-    form = add_post_form()
+    if request.user.is_staff:
+        if request.method == 'POST':
+            form = add_post_form(request.POST,request.FILES)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect('/')
+        form = add_post_form()
+    
+    else:
+        return HttpResponseRedirect('/')
     return render(request, 'dashboard/add_post.html', context={'form':form})
 
 def edit_post(request,pk):
-    article_obj = Article.objects.get(pk=pk)
+    if request.user.is_staff:
+        article_obj = Article.objects.get(pk=pk)
 
-    if request.method == 'POST':
-        form = add_post_form(request.POST,request.FILES,instance=article_obj)
+        if request.method == 'POST':
+            form = add_post_form(request.POST,request.FILES,instance=article_obj)
 
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/dashboard')
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect('/dashboard')
 
-    form = add_post_form(instance=article_obj)
-    
+        form = add_post_form(instance=article_obj)
+
+    else:
+        return HttpResponseRedirect('/')
     return render(request, 'dashboard/edit_post.html',context={'article_obj':article_obj, 'form':form})
 
 def delete_post(request, pk):
-    if request.method == 'POST':
-        obj = Article.objects.get(pk=pk)
-        obj.delete()
-        return HttpResponseRedirect('/dashboard')
-
+    if request.user.is_staff:
+        if request.method == 'POST':
+            obj = Article.objects.get(pk=pk)
+            obj.delete()
+            return HttpResponseRedirect('/dashboard')
+    else:
+        return HttpResponseRedirect('/')
 
 
 def news_home(request):
@@ -100,7 +112,7 @@ def news_home(request):
     categories = Category.objects.all()
     return render(request, 'news_home.html',context={'categories':categories,'articles':articles})
 
-def news_detail(request,slug):
+def news_detail(request,slug,category):
     article = Article.objects.get(slug=slug)
     return render(request, 'news_detail.html',context={'article':article})
 

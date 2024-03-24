@@ -8,5 +8,5 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['title','description','image','created_at','slug','category','user']
+    list_display = ['title','category','user']
     prepopulated_fields = {"slug": ('title',)}

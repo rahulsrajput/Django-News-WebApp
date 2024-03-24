@@ -38,7 +38,7 @@
             <div class="row mt-5 mb-5">
                 {% for article in articles %}
                 <div class="col-md-6 mb-4">
-                    <a href="{% url 'detail' article.slug %}" class="card shadow-none border-0 bg-transparent">
+                    <a href="{% url 'detail' article.category.name article.slug %}" class="card shadow-none border-0 bg-transparent">
                         <div class="card-body">
                             <h3 class="card-title">{{article.title}}</h3>
 
@@ -66,11 +66,6 @@
 
 
         </ul>
-
-        <!-- <a href="" class="pagination">&lt; View Older Posts</a>
-
-        <a href="" class="pagination">View Newer Posts &gt;</a> -->
-
 
     </section>
 

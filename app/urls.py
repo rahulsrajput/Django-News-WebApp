@@ -13,6 +13,6 @@ urlpatterns = [
     path('deletepost/<int:pk>', views.delete_post, name='deletepost'),
 
     path('', views.news_home, name='home'),
-    path('article/<slug:slug>', views.news_detail, name='detail'),
+    path('<str:category>/<slug:slug>', views.news_detail, name='detail'),
     path('about/', views.about, name='about'),
 ]
