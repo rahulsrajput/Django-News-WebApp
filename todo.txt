@@ -39,4 +39,6 @@
   - modified forms in templates
   - modified add_post, edit_post views :)
 
- 
+- Database changed to postgres
+
+- deployment setup
