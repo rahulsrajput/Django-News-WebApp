@@ -3,7 +3,7 @@ from .models import Category, Article
 from django.contrib.auth import login, logout, authenticate
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from .forms import login_form,signup_form
+from .forms import login_form,signup_form, add_post_form
 
 # Create your views here.
 def login_page(request):
@@ -53,7 +53,8 @@ def dashboard(request):
     return render(request, 'dashboard/dashboard_page.html', context={'articles':articles})
 
 def add_post(request):
-    return render(request, 'dashboard/add_post.html')
+    form = add_post_form()
+    return render(request, 'dashboard/add_post.html', context={'form':form})
 
 def edit_post(request,pk):
     article_obj = Article.objects.get(pk=pk)

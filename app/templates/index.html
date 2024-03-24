@@ -9,7 +9,8 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght,HEXP@160..700,22.3&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght,HEXP@160..700,22.3&display=swap"
+        rel="stylesheet">
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet" />
 
@@ -29,20 +30,28 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+    <script src="https://cdn.tiny.cloud/1/imo4bwx07lrvwhu1jgr7eor8r5rhulscffkfu752h2jgh7ly/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
+    
     <title>{% block title %}{% endblock %}</title>
-
 </head>
 
 <body>
     {% include 'navbar.html' %}
-    
+
     <section class="container p-2 mt-2">
         {% block content %}
         {% endblock %}
     </section>
 
 
-    
+
 </body>
 
 </html>

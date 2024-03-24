@@ -25,5 +25,8 @@
 
 - dashboard = delete_post views done :)
 
+- created form for adding post in forms.py 
+
 - django-tinymce installed for rich text editor
-  - update urls, models.py and settings for django-tinymce
+  - update urls, models.py and settings and index.html 
+    for django-tinymce

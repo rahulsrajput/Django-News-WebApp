@@ -3,6 +3,7 @@
 {% block title %}Add Post{% endblock %}
 {% block content %}
 
+
 <div class="text-black">
     <a href="{% url 'dashboard' %}">&larr; Back</a>
 
@@ -12,14 +13,8 @@
 
     <form action="" method="POST">
         {% csrf_token %}
-        <label for="title"><b>Title</b></label>
-        <input type="text" placeholder="Post Title" name="title">
-
-        <label for="body"><b>Content</b></label>
-        <textarea name="body" cols="50" rows="10"></textarea>
-
+        {{form.as_p}}
         <input type="submit" value="Add" class="btn">
-
     </form>
 </div>
 
