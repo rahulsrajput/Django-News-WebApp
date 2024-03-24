@@ -11,14 +11,15 @@
 
     <ul class="admin-posts">
 
+        {% for article in articles %}
         <li>
             <a href="">
-                Post Title &nearr;
+                {{article.title}} &nearr;
             </a>
             <div class="admin-post-controls">
-                <a href="{% url 'editpost' %}" class="btn">Edit</a>
+                <a href="{% url 'editpost' article.id %}" class="btn">Edit</a>
 
-                <form action="" method="POST">
+                <form action="{% url 'deletepost' article.id %}" method="POST">
                     {% csrf_token %}
                     <input type="submit" value="Delete" class="btn-delete btn">
                 </form>
@@ -26,6 +27,7 @@
             </div>
 
         </li>
+        {% endfor %}
 
     </ul>
 </div>

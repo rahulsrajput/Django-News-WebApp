@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField  
 
 # Create your models here.
 class Category(models.Model):
@@ -10,7 +11,7 @@ class Category(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
-    description = models.TextField(blank=False, null=False)
+    description = HTMLField()
     created_at = models.DateField(auto_now=True)
     slug = models.SlugField(default='', blank=False, null=False, max_length=100)
     image = models.ImageField(null=True , blank=True, upload_to='02_news_site/images')

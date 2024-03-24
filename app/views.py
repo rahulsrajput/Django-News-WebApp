@@ -49,13 +49,21 @@ def logout_page(request):
 
 
 def dashboard(request):
-    return render(request, 'dashboard/dashboard_page.html')
+    articles = Article.objects.all()
+    return render(request, 'dashboard/dashboard_page.html', context={'articles':articles})
 
 def add_post(request):
     return render(request, 'dashboard/add_post.html')
 
-def edit_post(request):
-    return render(request, 'dashboard/edit_post.html')
+def edit_post(request,pk):
+    article_obj = Article.objects.get(pk=pk)
+    return render(request, 'dashboard/edit_post.html',context={'article_obj':article_obj})
+
+def delete_post(request, pk):
+    if request.method == 'POST':
+        obj = Article.objects.get(pk=pk)
+        obj.delete()
+        return HttpResponseRedirect('/dashboard')
 
 
 

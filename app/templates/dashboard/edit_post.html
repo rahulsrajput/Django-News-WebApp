@@ -13,7 +13,7 @@
     <form action="" method="POST">
         {% csrf_token %}
       <label for="title"><b>Title</b></label>
-      <input type="text" placeholder="Post Title" name="title" value="">
+      <input type="text" placeholder="Post Title" name="title" value="{{article_obj.title}}">
     
       <label for="body"><b>Content</b></label>
       <textarea name="body" cols="50" rows="10"></textarea>
