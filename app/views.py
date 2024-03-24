@@ -53,11 +53,23 @@ def dashboard(request):
     return render(request, 'dashboard/dashboard_page.html', context={'articles':articles})
 
 def add_post(request):
+    if request.method == 'POST':
+        form = add_post_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
     form = add_post_form()
     return render(request, 'dashboard/add_post.html', context={'form':form})
 
 def edit_post(request,pk):
     article_obj = Article.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        title = request.POST['title']
+        desc = request.POST['description']
+        slug = request.POST['slug']
+        Article(pk=pk, title=title, description=desc, slug=slug).save()
+        return HttpResponseRedirect('/')
     return render(request, 'dashboard/edit_post.html',context={'article_obj':article_obj})
 
 def delete_post(request, pk):

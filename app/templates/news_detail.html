@@ -17,7 +17,7 @@
     <h1 class="text-black">{{article.title}}</h1>
 
     <div class="my-5">
-        <p>{{article.description}}</p>
+        <p>{{article.description|safe}}</p>
     </div>
 </article>
 {% endblock %}

@@ -13,9 +13,9 @@ class Article(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
     description = HTMLField()
     created_at = models.DateField(auto_now=True)
-    slug = models.SlugField(default='', blank=False, null=False, max_length=100)
+    slug = models.SlugField(default='', blank=False, null=False, max_length=100, unique=True)
     image = models.ImageField(null=True , blank=True, upload_to='02_news_site/images')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):

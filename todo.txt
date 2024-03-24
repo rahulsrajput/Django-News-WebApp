@@ -23,10 +23,14 @@
 
 - signup view , url done :)
 
-- dashboard = delete_post views done :)
-
 - created form for adding post in forms.py 
 
 - django-tinymce installed for rich text editor
   - update urls, models.py and settings and index.html 
     for django-tinymce
+
+- dashboard = delete_post views done :)
+
+- dashboard = add_post view and template done :)
+
+- dashboard = edit_post view and template done :)
