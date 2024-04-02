@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bpcwos5ix+*03h=9edpnd3-!il^hqv0n#83fb7yx6o%m7=&xv)'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -78,18 +78,14 @@ WSGI_APPLICATION = 'news.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'UjuOKGlweuxSQeYAClSdjbziNTGUFUMD',
-        'HOST': 'monorail.proxy.rlwy.net',
-        'PORT': '52154',
+        'PASSWORD': os.environ.get("PASSWORD"),
+        'HOST': os.environ.get("HOST"),
+        'PORT': os.environ.get("PORT"),
     }
 }
 
@@ -138,9 +134,9 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 CLOUDINARY_STORAGE = {
-    	'CLOUD_NAME': 'dmtucuzom',
-    	'API_KEY': '193861647335541',
-		'API_SECRET': 'K41mh2hwosIxRooG_tgYWs6udCo'
+    	'CLOUD_NAME': os.environ.get("CLOUD_NAME"),
+    	'API_KEY': os.environ.get("API_KEY"),
+		'API_SECRET': os.environ.get("API_SECRET"),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
